@@ -52,3 +52,20 @@ Bin: 1011011111
 Oct: 1337
 Hex: 2DF
 ```
+
+### Hexadecimal
+*Syntax:*
+```bash
+# Note that because of type sizes in c, very big numbers fail
+# Note that 'h' can be any word starting with 'h', like 'hex' or 'hexadecimal'
+conversor.out h <hexadecimal string>
+```
+
+*Example:*
+```console
+$ ./conversor.out hex AE
+Dec: 174
+Bin: 10101110
+Oct: 256
+Hex: AE
+```
