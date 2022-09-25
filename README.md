@@ -36,3 +36,19 @@ Bin: 111011
 Oct: 73
 Hex: 3B
 ```
+
+### Octal
+*Syntax:*
+```bash
+# Note that 'o' can be any word starting with 'o', like 'oct' or 'octal'
+conversor.out o <octal integer>
+```
+
+*Example:*
+```console
+$ ./conversor.out octal 1337
+Dec: 735
+Bin: 1011011111
+Oct: 1337
+Hex: 2DF
+```
