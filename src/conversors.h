@@ -43,18 +43,11 @@ int reverse_digits(int num) {
     return ret;
 }
 
+int bin2oct(long num);
+
 // Converts decimal to binary and then to octal
 int dec2oct(int num) {
-    int ret  = 0;               // Octal result that will be returned
-    long bin = dec2bin(num);    // First we convert the decimal arg to binary
-    
-    while (bin > 0) {
-        ret *= 10;                      // Shift digits of the octal ret
-        ret += bin2dec(bin % 1000);     // Convert the last 3 digits of the bin to decimal
-        bin /= 1000;                    // Remove the last 3 digits from bin
-    }
-
-    return reverse_digits(ret);         // We need to revert it because of the order we are converting binary
+    return bin2oct(dec2bin(num));   // We need to revert it because of the order we are converting binary
 }
 
 // Returns formated str from octal int. Unused
@@ -84,18 +77,36 @@ char int2hex(int num) {
     else          return num - 10 + 'A';
 }
 
+char* bin2hex(long num);
+
 // Returns hex str from decimal int
 char* dec2hex(int num) {
+    return bin2hex(dec2bin(num));
+}
+
+/*------------------------------------------------------------*/
+
+int bin2oct(long num) {
+    int ret = 0;
+
+    while (num > 0) {
+        ret *= 10;                      // Shift digits of the octal ret
+        ret += bin2dec(num % 1000);     // Convert the last 3 digits of the num to decimal
+        num /= 1000;                    // Remove the last 3 digits from num
+    }
+
+    return reverse_digits(ret);
+}
+
+char* bin2hex(long num) {
     const int max_chars = 12;
     char* ret = calloc(max_chars, sizeof(char)); // Hexadecimal result that will be returned
-    long bin = dec2bin(num);                     // First we convert the decimal arg to binary
     
     int strpos = max_chars - 2;
-    while (bin > 0 && strpos >= 0) {
-        ret[strpos--] += int2hex(bin2dec(bin % 10000));   // Convert the last 3 digits of the bin to decimal and then to hex char
-        bin /= 10000;                           // Remove the last 3 digits from bin
+    while (num > 0 && strpos >= 0) {
+        ret[strpos--] += int2hex(bin2dec(num % 10000));   // Convert the last 3 digits of the bin to decimal and then to hex char
+        num /= 10000;                                     // Remove the last 3 digits from bin
     }
 
     return &ret[strpos+1];
 }
-
