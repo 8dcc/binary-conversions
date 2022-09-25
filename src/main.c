@@ -8,7 +8,7 @@
 
 static inline void print_help();
 static inline void print_dec(int num);
-static inline void print_bin(long num);
+static inline void print_bin(long long num);
 static inline void print_oct(int num);
 static inline void print_hex(char* num);
 
@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
         print_dec(num);
         return 0;
     } else if (tolower(argv[1][0]) == 'b') {
-        long num = atol(argv[2]);
+        long long num = atol(argv[2]);
         print_bin(num);
         return 0;
     } else if (tolower(argv[1][0]) == 'o') {
@@ -54,28 +54,28 @@ void print_help(const char* argv0) {
 
 void print_dec(int num) {
     printf("Dec: %d\n", num);
-    printf("Bin: %ld\n", dec2bin(num));
+    printf("Bin: %lld\n", dec2bin(num));
     printf("Oct: %d\n", dec2oct(num));
     printf("Hex: %s\n", dec2hex(num));
 }
 
-void print_bin(long num) {
+void print_bin(long long num) {
     printf("Dec: %d\n", bin2dec(num));
-    printf("Bin: %ld\n", num);
+    printf("Bin: %lld\n", num);
     printf("Oct: %d\n", bin2oct(num));
     printf("Hex: %s\n", bin2hex(num));
 }
 
 void print_oct(int num) {
     printf("Dec: %d\n", oct2dec(num));
-    printf("Bin: %ld\n", oct2bin(num));
+    printf("Bin: %lld\n", oct2bin(num));
     printf("Oct: %d\n", num);
     printf("Hex: %s\n", oct2hex(num));
 }
 
 void print_hex(char* num) {
     printf("Dec: %d\n", hex2dec(num));
-    printf("Bin: %ld\n", hex2bin(num));
+    printf("Bin: %lld\n", hex2bin(num));
     printf("Oct: %d\n", hex2oct(num));
     printf("Hex: %s\n", num);
 }

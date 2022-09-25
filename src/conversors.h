@@ -1,6 +1,6 @@
 
 // Decimal to binary
-long dec2bin(int num) {
+long long dec2bin(int num) {
     int ret = 0;        // Binary result that will be returned
     int rem = 0;        // Remainder used when dividing the number
     int f   = 1;        // Factor that will be multiplied by 10 each loop
@@ -15,7 +15,7 @@ long dec2bin(int num) {
     return ret;
 }
 
-int bin2dec(long bin) {
+int bin2dec(long long bin) {
     int ret = 0;        // Decimal result that will be returned
     int rem = 0;        // Remainder that will be used to get each digit
     int p   = 0;        // Power that will be used when increasing ret. Will increase each iteration
@@ -43,7 +43,7 @@ int reverse_digits(int num) {
     return ret;
 }
 
-int bin2oct(long num);
+int bin2oct(long long num);
 
 // Converts decimal to binary and then to octal
 int dec2oct(int num) {
@@ -77,7 +77,7 @@ char int2hex(int num) {
     else          return num - 10 + 'A';
 }
 
-char* bin2hex(long num);
+char* bin2hex(long long num);
 
 // Returns hex str from decimal int
 char* dec2hex(int num) {
@@ -86,7 +86,7 @@ char* dec2hex(int num) {
 
 /*------------------------------------------------------------*/
 
-int bin2oct(long num) {
+int bin2oct(long long num) {
     int ret = 0;
 
     while (num > 0) {
@@ -98,7 +98,7 @@ int bin2oct(long num) {
     return reverse_digits(ret);
 }
 
-char* bin2hex(long num) {
+char* bin2hex(long long num) {
     const int max_chars = 12;
     char* ret = calloc(max_chars, sizeof(char)); // Hexadecimal result that will be returned
     
@@ -114,8 +114,8 @@ char* bin2hex(long num) {
 /*------------------------------------------------------------*/
 
 // Reverts a binary number in sets of 3. Unused
-long reverse_oct_bin(long num) {
-    long ret = 0;
+long long reverse_oct_bin(long long num) {
+    long long ret = 0;
 
     while (num > 0) {
         ret *= 1000;        // Shift 3 digits of the ret
@@ -126,8 +126,8 @@ long reverse_oct_bin(long num) {
     return ret;
 }
 
-long oct2bin(int num) {
-    long ret     = 0;
+long long oct2bin(int num) {
+    long long ret     = 0;
     long cur_bin = 0;    // Current digit of the octal converted to binary. Needed to store in case we need to add left 0's
     int digits   = 0;    // We need to shift the array depending on the digits we have
 
@@ -172,8 +172,8 @@ int hex2int(char c) {
     else          return c - 'a' + 10;
 }
 
-long hex2bin(const char* str) {
-    long ret   = 0;
+long long hex2bin(const char* str) {
+    long long ret   = 0;
     int strpos = 0;     // Will increase when converting each char
 
     // Iterate each char of str and save it in 'c'
