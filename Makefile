@@ -5,7 +5,7 @@ BIN=conversor
 
 all: $(BIN).out
 
-$(BIN).out: src/*.c #src/*.h
+$(BIN).out: src/*.c src/*.h
 	$(CC) $(CFLAGS) -o $@ src/main.c
 
 run: $(BIN).out
