@@ -1,15 +1,18 @@
-# Binary conversions
-**Tiny C program for converting to decimal, binary, octal and hexadecimal**
+<div align="center">
+    <h1>Binary conversions</h1>
+    <b>Tiny C program for converting to decimal, binary, octal and hexadecimal</b>
+</div>
 
-### Usage
+## Usage
 
-#### Decimal
-Syntax:
+### Decimal
+*Syntax:*
 ```bash
-conversor.out d <decimal integer>  # Note that 'd' can be any word starting with 'd', like 'dec' or 'decimal'
+# Note that 'd' can be any word starting with 'd', like 'dec' or 'decimal'
+conversor.out d <decimal integer>
 ```
 
-Example:
+*Example:*
 ```console
 $ ./conversor.out decimal 420
 Dec: 420
