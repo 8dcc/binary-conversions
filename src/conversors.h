@@ -35,7 +35,7 @@ int reverse_digits(int num) {
     int ret = 0;
 
     while (num > 0) {
-        ret *= 10;           // Shift a digits of the ret
+        ret *= 10;           // Shift a digit of the ret
         ret += num % 10;     // Append last digit of num
         num /= 10;           // Remove the last digit we just appended
     }
@@ -109,4 +109,53 @@ char* bin2hex(long num) {
     }
 
     return &ret[strpos+1];
+}
+
+/*------------------------------------------------------------*/
+
+// Reverts a binary number in sets of 3. Unused
+long reverse_oct_bin(long num) {
+    long ret = 0;
+
+    while (num > 0) {
+        ret *= 1000;        // Shift 3 digits of the ret
+        ret += num % 1000;  // Append 3 last digits of num
+        num /= 1000;        // Remove the 3 last digits we just appended
+    }
+
+    return ret;
+}
+
+long oct2bin(int num) {
+    long ret     = 0;
+    long cur_bin = 0;    // Current digit of the octal converted to binary. Needed to store in case we need to add left 0's
+    int digits   = 0;    // We need to shift the array depending on the digits we have
+
+    while (num > 0) {
+        cur_bin = dec2bin(num % 10);
+
+        /* Increase the number of digits of the new number:
+         *
+         * ret = 001 ->    001 |
+         * bin = 111 -> 111000 |-> 111001
+         *
+         * Iterate to avoid multiplying by 0
+         */
+        for (int n = 0; n < digits; n++)
+            cur_bin *= 10;
+
+        ret    += cur_bin;      // Add the new 3 digits to the 'left'
+        digits += 3;            // Count the last 3 digits for shifting the next 'cur_bin'
+        num    /= 10;           // Remove the last digit from num
+    }
+
+    return ret;
+}
+
+int oct2dec(int num) {
+    return bin2dec(oct2bin(num));
+}
+
+char* oct2hex(int num) {
+    return bin2hex(oct2bin(num));
 }

@@ -8,6 +8,7 @@
 static inline void print_help();
 static inline void print_dec(int num);
 static inline void print_bin(long num);
+static inline void print_oct(int num);
 
 int main(int argc, char** argv) {
     // If not enough args or help
@@ -24,6 +25,10 @@ int main(int argc, char** argv) {
     } else if (argv[1][0] == 'b') {
         long num = atol(argv[2]);
         print_bin(num);
+        return 0;
+    } else if (argv[1][0] == 'o') {
+        int num = atoi(argv[2]);
+        print_oct(num);
         return 0;
     } else {
         printf("Unknown options.\n");
@@ -54,4 +59,11 @@ void print_bin(long num) {
     printf("Bin: %ld\n", num);
     printf("Oct: %d\n", bin2oct(num));
     printf("Hex: %s\n", bin2hex(num));
+}
+
+void print_oct(int num) {
+    printf("Dec: %d\n", oct2dec(num));
+    printf("Bin: %ld\n", oct2bin(num));
+    printf("Oct: %d\n", num);
+    printf("Hex: %s\n", oct2hex(num));
 }
