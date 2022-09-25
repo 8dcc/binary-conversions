@@ -3,6 +3,15 @@
     <b>Tiny C program for converting to decimal, binary, octal and hexadecimal</b>
 </div>
 
+## Installation
+Download compiled binaries from the [releases](https://github.com/r4v10l1/binary-conversions/releases/latest) tab or build the source code using make:
+```bash
+git clone https://github.com/r4v10l1/binary-conversions
+cd binary-conversions
+make
+./conversor.out --help
+```
+
 ## Usage
 
 ### Decimal
