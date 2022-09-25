@@ -159,3 +159,41 @@ int oct2dec(int num) {
 char* oct2hex(int num) {
     return bin2hex(oct2bin(num));
 }
+
+/*------------------------------------------------------------*/
+
+// Returns an integer from hexchar
+int hex2int(char c) {
+    c = tolower(c);
+
+    if (c < '0' || c > 'f') return 0;
+
+    if (c <= '9') return c - '0';
+    else          return c - 'a' + 10;
+}
+
+long hex2bin(const char* str) {
+    long ret   = 0;
+    int strpos = 0;     // Will increase when converting each char
+
+    // Iterate each char of str and save it in 'c'
+    int c = 0;
+    while ((c = str[strpos++]) != '\0') {
+        // Shift return bin 4 digits
+        ret *= 10000;
+
+        // Convert the current pos of the string from left to right to integer and then to binary,
+        // then add it to the binary long that will be returned
+        ret += dec2bin(hex2int(c));
+    }
+
+    return ret;
+}
+
+int hex2dec(const char* str) {
+    return bin2dec(hex2bin(str));
+}
+
+int hex2oct(const char* str) {
+    return bin2oct(hex2bin(str));
+}

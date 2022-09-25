@@ -2,6 +2,7 @@
 #include <stdlib.h>     // atoi()
 #include <string.h>     // strcmp()
 #include <math.h>       // pow()
+#include <ctype.h>      // tolower()
 
 #include "conversors.h"
 
@@ -9,6 +10,7 @@ static inline void print_help();
 static inline void print_dec(int num);
 static inline void print_bin(long num);
 static inline void print_oct(int num);
+static inline void print_hex(char* num);
 
 int main(int argc, char** argv) {
     // If not enough args or help
@@ -18,17 +20,20 @@ int main(int argc, char** argv) {
     }
 
     // Check what are we trying to convert
-    if (argv[1][0] == 'd') {
+    if (tolower(argv[1][0]) == 'd') {
         int num = atoi(argv[2]);
         print_dec(num);
         return 0;
-    } else if (argv[1][0] == 'b') {
+    } else if (tolower(argv[1][0]) == 'b') {
         long num = atol(argv[2]);
         print_bin(num);
         return 0;
-    } else if (argv[1][0] == 'o') {
+    } else if (tolower(argv[1][0]) == 'o') {
         int num = atoi(argv[2]);
         print_oct(num);
+        return 0;
+    } else if (tolower(argv[1][0]) == 'h') {
+        print_hex(argv[2]);
         return 0;
     } else {
         printf("Unknown options.\n");
@@ -66,4 +71,11 @@ void print_oct(int num) {
     printf("Bin: %ld\n", oct2bin(num));
     printf("Oct: %d\n", num);
     printf("Hex: %s\n", oct2hex(num));
+}
+
+void print_hex(char* num) {
+    printf("Dec: %d\n", hex2dec(num));
+    printf("Bin: %ld\n", hex2bin(num));
+    printf("Oct: %d\n", hex2oct(num));
+    printf("Hex: %s\n", num);
 }
