@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include <stdlib.h>     // atoi()
-#include <string.h>     // strcmp()
-#include <math.h>       // pow()
-#include <ctype.h>      // tolower()
+#include <ctype.h>     // tolower()
+#include <math.h>      // pow()
+#include <stdlib.h>    // atoi()
+#include <string.h>    // strcmp()
 
 #include "conversors.h"
 
