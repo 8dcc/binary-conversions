@@ -14,3 +14,6 @@ run: $(BIN).out
 
 clean:
 	rm $(BIN).out
+
+compensate.out: src/compensate.c
+	$(CC) $(CFLAGS) -o $@ $<
