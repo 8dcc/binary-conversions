@@ -78,3 +78,11 @@ Bin: 10101110
 Oct: 256
 Hex: AE
 ```
+
+## Compensate
+```c
+make compensate.out
+./compensate.out <max items> < item-list.txt
+```
+
+You can see an example of `conversor` and `compensate` in [`misc/binary-table.sh`](misc/binary-table.sh).
