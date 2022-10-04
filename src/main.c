@@ -17,8 +17,6 @@ static inline void switch_bin(char target, long long num);
 static inline void switch_oct(char target, int num);
 static inline void switch_hex(char target, const char* num);
 
-// TODO: Replace ifs with switches inside main
-
 int main(int argc, char** argv) {
     // If not enough args or help
     if (argc < 3 || strcmp(argv[1], "--help") == 0) {
@@ -26,42 +24,54 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    // Only 2 args, unit and number, show all other units
-    if (argc == 3) {
+    if (argc == 3) {    // Only 2 args, unit and number, show all other units
         // Check what are we trying to convert
-        if (tolower(argv[1][0]) == 'd') {
-            int num = atoi(argv[2]);
-            print_dec(num);
-            return 0;
-        } else if (tolower(argv[1][0]) == 'b') {
-            long long num = atoll(argv[2]);
-            print_bin(num);
-            return 0;
-        } else if (tolower(argv[1][0]) == 'o') {
-            int num = atoi(argv[2]);
-            print_oct(num);
-            return 0;
-        } else if (tolower(argv[1][0]) == 'h') {
-            print_hex(argv[2]);
-            return 0;
-        } else {
-            die("Unknown options. See --help for more info.");
+        switch (tolower(argv[1][0])) {
+            case 'd': {
+                int num = atoi(argv[2]);
+                print_dec(num);
+                return 0;
+            }
+            case 'b': {
+                long long num = atoll(argv[2]);
+                print_bin(num);
+                return 0;
+            }
+            case 'o': {
+                int num = atoi(argv[2]);
+                print_oct(num);
+                return 0;
+            }
+            case 'h': {
+                print_hex(argv[2]);
+                return 0;
+            }
+            default:
+                die("Unknown options. See --help for more info.");
         }
-        // 3 args, unit, target unit and number
-    } else if (argc >= 4) {
-        if (tolower(argv[1][0]) == 'd') {
-            int num = atoi(argv[3]);
-            switch_dec(argv[2][0], num);
-        } else if (tolower(argv[1][0]) == 'b') {
-            long long num = atoll(argv[3]);
-            switch_bin(argv[2][0], num);
-        } else if (tolower(argv[1][0]) == 'o') {
-            int num = atoi(argv[3]);
-            switch_oct(argv[2][0], num);
-        } else if (tolower(argv[1][0]) == 'h') {
-            switch_hex(argv[2][0], argv[3]);
-        } else {
-            die("Unknown options. See --help for more info.");
+    } else if (argc >= 4) {    // 3 args, unit, target unit and number
+        switch (tolower(argv[1][0])) {
+            case 'd': {
+                int num = atoi(argv[3]);
+                switch_dec(argv[2][0], num);
+                return 0;
+            }
+            case 'b': {
+                long long num = atoll(argv[3]);
+                switch_bin(argv[2][0], num);
+                return 0;
+            }
+            case 'o': {
+                int num = atoi(argv[3]);
+                switch_oct(argv[2][0], num);
+                return 0;
+            }
+            case 'h': {
+                switch_hex(argv[2][0], argv[3]);
+                return 0;
+            }
+            default:
+                die("Unknown options. See --help for more info.");
         }
     }
 
