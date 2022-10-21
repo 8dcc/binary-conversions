@@ -86,3 +86,7 @@ make compensate.out
 ```
 
 You can see an example of `conversor` and `compensate` in [`misc/binary-table.sh`](misc/binary-table.sh).
+
+## Old method
+An old and worse method can be found on the [`old-conversions`](https://github.com/r4v10l1/binary-conversions/tree/old-conversions) branch.
+
